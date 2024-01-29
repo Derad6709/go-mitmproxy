@@ -41,15 +41,15 @@ func NewProxy(opts *Options) (*Proxy, error) {
 
 	proxy := &Proxy{
 		Opts:    opts,
-		Version: "1.6.0",
+		Version: "1.6.1",
 		Addons:  make([]Addon, 0),
 	}
 
 	proxy.client = &http.Client{
 		Transport: &http.Transport{
 			Proxy:              clientProxy(opts.Upstream),
-			ForceAttemptHTTP2:  false, // disable http2
-			DisableCompression: true,  // To get the original response from the server, set Transport.DisableCompression to true.
+			ForceAttemptHTTP2:  true, // enable http2
+			DisableCompression: true, // To get the original response from the server, set Transport.DisableCompression to true.
 			TLSClientConfig: &tls.Config{
 				InsecureSkipVerify: opts.SslInsecure,
 				KeyLogWriter:       getTlsKeyLogWriter(),

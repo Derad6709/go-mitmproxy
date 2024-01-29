@@ -250,7 +250,7 @@ func (addon *testOrderAddon) StreamResponseModifier(f *Flow, in io.Reader) io.Re
 func TestProxy(t *testing.T) {
 	helper := &testProxyHelper{
 		server:    &http.Server{},
-		proxyAddr: ":29080",
+		proxyAddr: ":8080",
 	}
 	helper.init(t)
 	httpEndpoint := helper.httpEndpoint
